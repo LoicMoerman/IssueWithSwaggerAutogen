@@ -1,0 +1,43 @@
+{
+    "name": "elective-node",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.ts",
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc -w",
+        "dev": "nodemon src/app.ts",
+        "start": "ts-node src/app.ts",
+        "start:prod": "node dist/app.js",
+        "swagger-autogen": "node src/utils/swagger.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@types/cookie-parser": "^1.4.2",
+        "@types/express": "^4.17.12",
+        "@types/node": "^15.12.0",
+        "@types/nodemailer": "^6.4.2",
+        "cookie": "^0.4.1",
+        "cookie-parser": "^1.4.5",
+        "cors": "^2.8.5",
+        "crypto-js": "^4.0.0",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "reflect-metadata": "^0.1.13",
+        "swagger-autogen": "^2.10.0",
+        "swagger-ui-express": "^4.1.6",
+        "ts-node": "^10.0.0",
+        "typeorm": "^0.2.34",
+        "typescript": "^4.3.2"
+    },
+    "devDependencies": {
+        "concurrently": "^6.2.0",
+        "nodemon": "^2.0.7"
+    },
+    "nodemonConfig": {
+        "ignore": [
+            "src/utils/*.json"
+        ]
+    }
+}

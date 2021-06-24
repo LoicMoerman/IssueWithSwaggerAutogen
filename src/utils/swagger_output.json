@@ -1,0 +1,225 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/users/": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create one user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Add an user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Users successfully obtained.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update one user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Update an User",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully updated.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "$ref": "#/definitions/User"
+                },
+                "msg": {
+                  "type": "string",
+                  "example": "User successfully updated"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "User id is missing."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get one user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully obtained.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete one user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "User id is missing."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 18
+        },
+        "password": {
+          "type": "string",
+          "example": "1234"
+        },
+        "firstname": {
+          "type": "string",
+          "example": "firstname"
+        },
+        "lastname": {
+          "type": "string",
+          "example": "lastname"
+        },
+        "email": {
+          "type": "string",
+          "example": "test@gmail.com"
+        },
+        "role": {
+          "type": "string",
+          "example": "\"admin\" | \"client\" | \"deliveryMan\" | \"restaurateur\" | \"saleDepartment\" | \"technicalService\""
+        },
+        "referalCode": {
+          "type": "string",
+          "example": "ABCDEF"
+        },
+        "sponsored": {
+          "type": "array",
+          "example": [
+            1
+          ],
+          "items": {
+            "type": "number"
+          }
+        },
+        "sponsor": {
+          "type": "number",
+          "example": 2
+        },
+        "restaurantId": {
+          "type": "string",
+          "example": "IDMongoose du restaurant"
+        }
+      }
+    }
+  }
+}
